@@ -1,0 +1,21 @@
+def combination_sums(arr):
+    n = len(arr)
+    total = 1 << n   
+    l1= []
+    for mask in range(1, total):   # skip empty set (mask = 0)
+        combo = []
+        s = 0
+
+        for i in range(n):
+            if mask & (1 << i):
+                combo.append(arr[i])
+                s += arr[i]
+                
+        print("Combination:", combo, " Sum:", s)
+        if (s % 3 == 0):
+            l1.append(s)
+    lmax= max(l1)
+    print ("maximum sum combo divided  by 3 " , lmax)
+
+nums = [3, 6, 5, 1, 8]
+combination_sums(nums)
